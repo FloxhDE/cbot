@@ -24,7 +24,7 @@ export default class I18n {
         }
     }
 
-    public static getInstance() {
+    public static getInstance(): I18n {
         return I18n.INSTANCE;
     }
 

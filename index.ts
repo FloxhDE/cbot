@@ -5,52 +5,63 @@ import RausCommand from './commands/raus';
 import I18n from './i18n';
 import LanguageCommand from "./commands/language";
 import HelpCommand from "./commands/help";
+import Config from "./config";
 
-// Load and configure Log4js Logger
 export const log4js = require('log4js');
-log4js.configure({
-    appenders: {
-        out: {type: 'file', filename: 'cbot.log', flags: 'w'},
-        console: {type: 'console'}
-    },
-    categories: {
-        default: {appenders: ['out', 'console'], level: 'info'}
-    }
-});
 
-let fs = require('fs');
-let logger = log4js.getLogger('BotInitializer');
+function main(args: string[]) {
+    // Load and configure Log4js Logger
+    log4js.configure({
+        appenders: {
+            out: {type: 'file', filename: 'cbot.log', flags: 'w'},
+            console: {type: 'console'}
+        },
+        categories: {
+            default: {appenders: ['out', 'console'], level: 'info'}
+        }
+    });
 
-// Load langfiles and configure i18n module
-fs.access('./lang', (err) => {
-    if (err) logger.error(`Lang folder not found, running without string messages! ${err}`);
-});
-fs.readdir('./lang', ['utf-8', true], (err, files) => {
-    if (err) {
-        logger.error(`Error while reading langfiles, running without string messages! ${err}`);
-        return;
-    }
-    let langfiles: string[] = [];
-    for (let i = 0; i < files.length; i++) {
-        langfiles.push(files[i]);
-    }
+    let fs = require('fs');
+    let logger = log4js.getLogger('BotInitializer');
 
-    let langfilecontents: { [langfile: string]: string } = {};
-    for (let i in langfiles) {
-        let data = fs.readFileSync('./lang/' + langfiles[i]);
-        langfilecontents[langfiles[i].split('.')[0]] = data.toString('utf-8');
-    }
+    // Synchronously load config file
+    let config = new Config('./config.json');
 
-    new I18n(langfilecontents, 'de_DE');
-    logger.info('Successfully initialized i18n module');
-});
+    // Load langfiles and configure i18n module
+    fs.access('./lang', (err) => {
+        if (err) {
+            logger.error(`Lang folder not found, running without string messages! ${err}`);
+            return;
+        }
+        fs.readdir('./lang', ['utf-8', true], (err, files) => {
+            if (err) {
+                logger.error(`Error while reading langfiles, running without string messages! ${err}`);
+                return;
+            }
+            let langfiles: string[] = [];
+            for (let i = 0; i < files.length; i++) {
+                langfiles.push(files[i]);
+            }
 
+            let langfilecontents: { [langfile: string]: string } = {};
+            for (let i in langfiles) {
+                let data = fs.readFileSync('./lang/' + langfiles[i]);
+                langfilecontents[langfiles[i].split('.')[0]] = data.toString('utf-8');
+            }
 
-// Load Discord Bot Token and boot Discord Bot
-fs.readFile('./token.txt', (err, data) => {
-    if (err) throw err;
-    new CBot(data.toString('UTF-8'));
-});
+            new I18n(langfilecontents, config.getValue('language'));
+            logger.info('Successfully initialized i18n module');
+        });
+    });
+
+    // Load Discord Bot Token and boot Discord Bot
+    fs.readFile('./token.txt', (err, data) => {
+        if (err) throw err;
+        new CBot(data.toString('UTF-8'));
+    });
+}
+
+main(process.argv.slice(2));
 
 export default class CBot {
     private readonly discord = require('discord.js');

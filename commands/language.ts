@@ -2,6 +2,7 @@ import DiscordCommand, {sendInvalidArgsMessage} from './command';
 import {Message} from 'discord.js';
 import {log4js} from '../index';
 import I18n from '../i18n';
+import Config from "../config";
 
 export default class LanguageCommand implements DiscordCommand {
     private logger = log4js.getLogger('LanguageCommand');
@@ -14,6 +15,7 @@ export default class LanguageCommand implements DiscordCommand {
                 let success = i18n.setDefaultLangcode(args[0]);
                 if (success) {
                     this.reply(msg, i18n.getI18nString('command.language.success').toString());
+                    Config.getInstance().setValue('language', new_langcode);
                 } else {
                     this.reply(msg, i18n.getI18nString('command.language.invalid').toString());
                 }
