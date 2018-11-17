@@ -1,0 +1,14 @@
+{
+    "command.invalidsyntax": ":x: Ungültige Argumente! Syntax: {0}",
+    "command.test.syntax": "test",
+    "command.test.text": "hallo.",
+    "command.raus.syntax": "raus",
+    "command.raus.text": "(:point_right: ͡° ͜ʖ ͡°):point_right: :door:",
+    "command.language.syntax": "language <Sprochcode>",
+    "command.language.success": ":white_check_mark: Sproch erfolgreich geändat!",
+    "command.language.invalid": ":x: Ungültiga Sprochcode!",
+    "command.language.alreadyset": ":x: De Sproch wead schon vawendet!",
+    "command.help.syntax": "help",
+    "command.help.textheader": "Folgende Commands untastützt da Bot derzeit (Format: <command>: <syntax>): \n",
+    "event.mre.delimiter": "mei Delimiter is: {0}"
+}
