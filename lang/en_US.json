@@ -1,3 +1,14 @@
 {
-
+	"command.invalidsyntax": ":x: Invalid arguments! Usage: {0}",
+	"command.test.syntax": "test",
+	"command.test.text": "hello.",
+	"command.raus.syntax": "raus",
+	"command.raus.text": "(:point_right: ͡° ͜ʖ ͡°):point_right: :door:",
+	"command.language.syntax": "language <Lang Code>",
+	"command.language.success": ":white_check_mark: Language changed successfully!",
+	"command.language.invalid": ":x: Invalid lang code!",
+	"command.language.alreadyset": ":x: This language is already being used!",
+	"command.help.syntax": "help",
+	"command.help.textheader": "The following commands are currently supported (Format: <command>: <syntax>): \n",
+	"event.mre.delimiter": "my delimiter is: {0}"
 }
