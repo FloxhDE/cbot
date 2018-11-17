@@ -12,6 +12,7 @@ export default class I18n {
             for (let key in file_contents) {
                 try {
                     this.lang_strings[key] = JSON.parse(file_contents[key]);
+                    this.logger.info(`Successfully loaded '${key}.json'`)
                 } catch (err) {
                     this.logger.error(`Malformed JSON found (${key}): ' + ${err}`);
                 }
