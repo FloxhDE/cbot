@@ -1,0 +1,14 @@
+{
+	"command.invalidsyntax": ":x: Ungültige Argumente! Syntax: {0}",
+	"command.test.syntax": "test",
+	"command.test.text": "hallo.",
+	"command.raus.syntax": "raus",
+	"command.raus.text": "(:point_right: ͡° ͜ʖ ͡°):point_right: :door:",
+	"command.language.syntax": "language <Sprachcode>",
+	"command.language.success": ":white_check_mark: Sprache erfolgreich geändert!",
+	"command.language.invalid": ":x: Ungültiger Sprachcode!",
+	"command.language.alreadyset": ":x: Diese Sprache wird bereits verwendet!",
+	"command.help.syntax": "help",
+	"command.help.textheader": "Folgende Commands unterstützt der Bot derzeit (Format: <command>: <syntax>): \n",
+	"event.mre.delimiter": "mein Delimiter ist: {0}"
+}
