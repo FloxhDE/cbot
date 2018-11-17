@@ -25,7 +25,7 @@ function main(args: string[]) {
     let logger = log4js.getLogger('BotInitializer');
 
     // Synchronously load config file
-    let config = new Config('./config.json');
+    let config = new Config(args[0]);
 
     // Load langfiles and configure i18n module
     fs.access('./lang', (err) => {
