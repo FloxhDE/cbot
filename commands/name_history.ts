@@ -40,7 +40,7 @@ export default class NameHistoryCommand implements DiscordCommand {
                     for (let i = 0; i < value.length; i++) {
                         let changeDate = new Date(value[i]["changedToAt"]);
                         let langCode = this.i18n.getDefaultLangcode().replace('_', '-');
-                        let formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+                        let formatOptions = {year: 'numeric', month: 'long', day: 'numeric'};
                         builder.push((i == 0 ? this.i18n.getI18nString('command.namehistory.originalname').toString() :
                             `${changeDate.toLocaleDateString(langCode, formatOptions)} ${changeDate.toLocaleTimeString(langCode)}`) + ` — ${value[i].name}`);
                     }

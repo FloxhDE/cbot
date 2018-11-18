@@ -1,4 +1,4 @@
-import {Client} from 'discord.js';
+import {Client, TextChannel} from 'discord.js';
 import MessageReceivedEvent from './events/message_received';
 import TestCommand from './commands/test';
 import RausCommand from './commands/raus';
@@ -60,6 +60,7 @@ function main(args: string[]) {
         if (err) throw err;
         new CBot(data.toString('UTF-8'));
     });
+
 }
 
 main(process.argv.slice(2));
@@ -83,6 +84,15 @@ export default class CBot {
     constructor(private bot_token: string) {
         this.discord_client.on('ready', () => {
             this.logger.info(`Successfully logged in as ${this.discord_client.user.tag}`);
+            /* temp */
+            let readline = require('readline');
+            let rl = readline.createInterface(process.stdin, process.stdout);
+            rl.on('line', (line) => {
+                let message = line.trim();
+                if (message != "") {
+                    (this.discord_client.channels.find((channel) => (channel as TextChannel).name == "general") as TextChannel).send(message).catch(this.logger.error);
+                }
+            });
             this.registerEvents();
         });
         this.discord_client.login(bot_token).catch((err) => {
