@@ -11,7 +11,6 @@ export default class LanguageCommand implements DiscordCommand {
 
     onCommand(msg: Message, args: string[]) {
         this.i18n = I18n.getInstance();
-        console.log(args.length);
         switch (args.length) {
             case 0:
                 let messageBuffer = [this.i18n.getI18nString('command.language.listtitle').toString(), '```'];
