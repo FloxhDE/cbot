@@ -7,7 +7,8 @@ export default class MessageReceivedEvent implements DiscordEvent {
     onEvent(e: Message): void {
         let logger = log4js.getLogger('MessageReceivedEvent');
         let i18n = I18n.getInstance();
-        logger.info(`${e.author.tag} (${e.channel}): ${e.content}`);
+        let msg_contents = e.content.split('\n').join('\\n');
+        logger.info(`${e.author.tag} (${e.channel}): ${msg_contents}`);
 
         if (e.content == '<@504730507825905676>') {
             e.reply(i18n.getI18nString('event.mre.delimiter').fillArguments(ContentBot.delimiter)).catch(logger.error);

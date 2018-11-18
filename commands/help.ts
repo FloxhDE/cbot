@@ -10,9 +10,11 @@ export default class HelpCommand implements DiscordCommand {
         if (args.length === 0) {
             let help_text = [];
             help_text.push(i18n.getI18nString("command.help.textheader").toString());
+            help_text.push('```\n');
             for (let key in ContentBot.commands) {
                 help_text.push(key + ": " + i18n.getI18nString(`command.${key}.syntax`).toString() + "\n");
             }
+            help_text.push('```');
             msg.channel.send(help_text.join('')).catch(logger.error);
         } else {
             sendInvalidArgsMessage(msg, 'help', logger);
