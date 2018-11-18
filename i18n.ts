@@ -41,6 +41,10 @@ export default class I18n {
         return validated;
     }
 
+    public getLangStrings() {
+        return this.lang_strings;
+    }
+
     public getI18nString(key: string, lang?: string): I18nString {
         return new I18nString(this.getString(key, lang));
     }

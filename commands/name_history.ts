@@ -1,11 +1,11 @@
-import DiscordCommand, {sendInvalidArgsMessage} from "./command";
-import {Message} from "discord.js";
-import {log4js} from "../index";
-import I18n from "../i18n";
+import DiscordCommand, {sendInvalidArgsMessage} from './command';
+import {Message} from 'discord.js';
+import {log4js} from '../index';
+import I18n from '../i18n';
 
 export default class NameHistoryCommand implements DiscordCommand {
 
-    private logger = log4js.getLogger("NameHistoryCommand");
+    private logger = log4js.getLogger('NameHistoryCommand');
     private readonly fetch = require('node-fetch');
     private i18n;
 
@@ -18,13 +18,13 @@ export default class NameHistoryCommand implements DiscordCommand {
                 return;
             }).then((response) => {
                 response.json().then((value) => {
-                    this.createNameHistory(value[0]["id"]).then((message) => {
+                    this.createNameHistory(value[0]['id']).then((message) => {
                         msg.channel.send(this.i18n.getI18nString('command.namehistory.title').fillArguments(args[0]) + message).catch(this.logger.error);
                     });
                 });
             });
         } else {
-            sendInvalidArgsMessage(msg, "namehistory", this.logger);
+            sendInvalidArgsMessage(msg, 'namehistory', this.logger);
         }
     }
 
@@ -38,7 +38,7 @@ export default class NameHistoryCommand implements DiscordCommand {
             this.getNameHistory(uuid).then((response) => {
                 response.json().then((value) => {
                     for (let i = 0; i < value.length; i++) {
-                        let changeDate = new Date(value[i]["changedToAt"]);
+                        let changeDate = new Date(value[i]['changedToAt']);
                         let langCode = this.i18n.getDefaultLangcode().replace('_', '-');
                         let formatOptions = {year: 'numeric', month: 'long', day: 'numeric'};
                         builder.push((i == 0 ? this.i18n.getI18nString('command.namehistory.originalname').toString() :
@@ -54,7 +54,7 @@ export default class NameHistoryCommand implements DiscordCommand {
     private getUUID(player_name: string): Promise<any> {
         return this.fetch('https://api.mojang.com/profiles/minecraft', {
             method: 'POST',
-            body: `["${player_name}"]`,
+            body: `['${player_name}']`,
             headers: {
                 'Content-Type': 'application/json'
             }

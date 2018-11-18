@@ -19,7 +19,7 @@ export default class MessageReceivedEvent implements DiscordEvent {
             let commands = ContentBot.commands;
             for (let c_key in commands) {
                 if (c_key === parts[0].substring(1, parts[0].length)) {
-                    commands[c_key].onCommand(e, parts.splice(1, 1))
+                    commands[c_key].onCommand(e, parts.slice(1, parts.length))
                 }
             }
         }
