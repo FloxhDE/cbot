@@ -10,6 +10,7 @@
 	"command.language.alreadyset": ":x: Diese Sprache wird bereits verwendet!",
 	"command.help.syntax": "help",
 	"command.help.textheader": "Folgende Commands unterstützt der Bot derzeit (Format: <command>: <syntax>): \n",
+	"command.namehistory.syntax": "namehistory <Minecraft-Name>",
 	"command.namehistory.fail": ":x: Beim Abrufen des Namensverlauf ist ein Fehler aufgetreten!",
 	"command.namehistory.title": "Namensverlauf für {0}:\n",
 	"command.namehistory.originalname": "Originaler Name:",

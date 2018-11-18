@@ -10,6 +10,7 @@
     "command.language.alreadyset": ":x: De Sproch wead schon vawendet!",
     "command.help.syntax": "help",
     "command.help.textheader": "Folgende Commands untastützt da Bot derzeit (Format: <command>: <syntax>): \n",
+	"command.namehistory.syntax": "namehistory <Minecraft-Nom>",
     "command.namehistory.fail": ":x: Beim Obruafn vom Nomensvalauf is a Fehla auftretn!",
 	"command.namehistory.title": "Nomensvalauf von {0}:\n",
 	"command.namehistory.originalname": "Originala Nom:",
