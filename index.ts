@@ -6,6 +6,7 @@ import I18n from './i18n';
 import LanguageCommand from "./commands/language";
 import HelpCommand from "./commands/help";
 import Config from "./config";
+import NameHistoryCommand from "./commands/name_history";
 
 export const log4js = require('log4js');
 
@@ -72,7 +73,8 @@ export default class CBot {
         'test': new TestCommand(),
         'raus': new RausCommand(),
         'language': new LanguageCommand(),
-        'help': new HelpCommand()
+        'help': new HelpCommand(),
+        'namehistory': new NameHistoryCommand()
     };
     public static readonly events = {
         'message': new MessageReceivedEvent()

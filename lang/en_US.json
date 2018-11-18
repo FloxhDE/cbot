@@ -10,5 +10,8 @@
 	"command.language.alreadyset": ":x: This language is already being used!",
 	"command.help.syntax": "help",
 	"command.help.textheader": "The following commands are currently supported (Format: <command>: <syntax>): \n",
+	"command.namehistory.fail": ":x: An error occurred while retrieving the name history!",
+	"command.namehistory.title": "Name History for {0}:\n",
+	"command.namehistory.originalname": "Original Name:",
 	"event.mre.delimiter": "my delimiter is: {0}"
 }

@@ -10,5 +10,8 @@
 	"command.language.alreadyset": ":x: Gurk-Gurk Gurk-Gurk Gurke!",
 	"command.help.syntax": "help",
 	"command.help.textheader": "Gurke Gurke, Gurke Gurke-Gurk :cucumber: (Gurke: <Gurke>: <Gurke>): \n",
+		"command.namehistory.fail": ":x: GUURK!",
+	"command.namehistory.title": "Gurke-Gurk Gurke {0}:\n",
+	"command.namehistory.originalname": "Gurke-Gurke:",
 	"event.mre.delimiter": "Gurke: {0}"
 }
